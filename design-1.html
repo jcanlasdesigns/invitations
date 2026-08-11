@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Elena & James · Wedding</title>
+  <!-- Google Fonts: serif display + clean sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      background: #0d0b0a;
+      color: #f2ede8;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== REUSABLE ===== */
+    .section-padding {
+      padding: clamp(3rem, 8vh, 6rem) clamp(1.5rem, 4vw, 70px);
+    }
+    .center-content {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+    }
+    .light-text {
+      font-weight: 300;
+      letter-spacing: 0.04em;
+    }
+    .gold-accent {
+      color: #d4b68a;
+    }
+    .divider-line {
+      width: 60px;
+      height: 1px;
+      background: #d4b68a;
+      margin: 1.2rem auto;
+    }
+    .divider-line.light {
+      background: rgba(212, 182, 138, 0.3);
+    }
+
+    /* ===== VIDEO HERO ===== */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100svh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 8, 7, 0.45);
+      z-index: 1;
+      backdrop-filter: blur(1px);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 1.5rem;
+      max-width: 900px;
+      opacity: 0;
+      animation: heroFade 2s ease forwards;
+    }
+    .hero-content .pre-title {
+      font-size: clamp(0.8rem, 1.2vw, 1.1rem);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #d4b68a;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 1.2s 0.3s ease forwards;
+    }
+    .hero-content .names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 10vw, 6.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      margin: 0.2rem 0 0.3rem;
+      opacity: 0;
+      animation: fadeUp 1.4s 0.6s ease forwards;
+    }
+    .hero-content .names span {
+      display: inline-block;
+      margin: 0 0.1em;
+    }
+    .hero-content .date {
+      font-size: clamp(1rem, 1.6vw, 1.4rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #e5d9cc;
+      margin: 0.5rem 0 1.2rem;
+      opacity: 0;
+      animation: fadeUp 1.2s 1s ease forwards;
+    }
+    .hero-content .tagline {
+      font-size: clamp(1rem, 1.2vw, 1.2rem);
+      font-style: italic;
+      color: #e0d4c6;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 1s 1.3s ease forwards;
+    }
+    .btn-open {
+      display: inline-block;
+      padding: 0.9rem 3.2rem;
+      border: 1px solid rgba(212, 182, 138, 0.6);
+      background: transparent;
+      color: #f2ede8;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(4px);
+      background: rgba(20, 16, 14, 0.3);
+      opacity: 0;
+      animation: fadeUp 1s 1.6s ease forwards;
+    }
+    .btn-open:hover {
+      background: #d4b68a;
+      color: #0d0b0a;
+      border-color: #d4b68a;
+      box-shadow: 0 8px 30px rgba(212, 182, 138, 0.15);
+    }
+
+    @keyframes heroFade {
+      0% { opacity: 0; transform: scale(1.02); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(16px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== INVITATION REVEAL ===== */
+    .invitation-wrapper {
+      background: #0d0b0a;
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .invitation-wrapper.hidden {
+      opacity: 0;
+      transform: translateY(30px);
+      pointer-events: none;
+      max-height: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+    .invitation-wrapper.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      max-height: none;
+      overflow: visible;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      width: 100%;
+    }
+
+    /* COUPLE INTRO */
+    .section-intro {
+      background: #0d0b0a;
+      padding: clamp(4rem, 10vh, 7rem) clamp(1.5rem, 4vw, 70px);
+      text-align: center;
+    }
+    .section-intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .section-intro p {
+      max-width: 640px;
+      margin: 1.2rem auto 0;
+      font-weight: 300;
+      color: #cbc1b5;
+      font-size: clamp(1rem, 1.1vw, 1.2rem);
+    }
+
+    /* WEDDING DETAILS */
+    .section-details {
+      background: #14100e;
+      padding: clamp(3.5rem, 8vh, 6rem) clamp(1.5rem, 4vw, 70px);
+      position: relative;
+    }
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 2.5rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .detail-item .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #b8aa99;
+      margin-bottom: 0.3rem;
+    }
+    .detail-item .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      font-weight: 600;
+      color: #f2ede8;
+    }
+
+    /* VENUE */
+    .section-venue {
+      background: #0d0b0a;
+      padding: clamp(3rem, 8vh, 6rem) 0;
+    }
+    .venue-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      width: 100%;
+    }
+    .venue-map {
+      flex: 1 1 55%;
+      min-height: 320px;
+      background: #2a241f;
+      position: relative;
+      overflow: hidden;
+    }
+    .venue-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      border: 0;
+      filter: grayscale(0.3) contrast(0.9);
+    }
+    .venue-info {
+      flex: 1 1 45%;
+      padding: clamp(2.5rem, 5vw, 4rem) clamp(1.8rem, 4vw, 3.5rem);
+      background: #14100e;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .venue-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .venue-info address {
+      font-style: normal;
+      font-weight: 300;
+      color: #cbc1b5;
+      margin: 0.5rem 0 1.5rem;
+      line-height: 1.6;
+    }
+    .btn-directions {
+      display: inline-block;
+      padding: 0.7rem 2.2rem;
+      border: 1px solid #d4b68a;
+      color: #d4b68a;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: 0.3s;
+      align-self: flex-start;
+    }
+    .btn-directions:hover {
+      background: #d4b68a;
+      color: #0d0b0a;
+    }
+
+    /* COUNTDOWN */
+    .section-countdown {
+      background: #14100e;
+      padding: clamp(3rem, 8vh, 5rem) clamp(1.5rem, 4vw, 70px);
+      text-align: center;
+    }
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: clamp(1.2rem, 3vw, 3rem);
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .countdown-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 600;
+      line-height: 1;
+    }
+    .countdown-item small {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #b8aa99;
+      margin-top: 0.3rem;
+    }
+    .countdown-finished {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: #d4b68a;
+    }
+
+    /* PRENUP VIDEO */
+    .section-prenup {
+      background: #0d0b0a;
+      padding: clamp(2rem, 5vh, 4rem) 0;
+    }
+    .prenup-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3vw, 40px);
+    }
+    .prenup-container video {
+      width: 100%;
+      border-radius: 2px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+      display: block;
+      background: #000;
+    }
+    .prenup-caption {
+      text-align: center;
+      margin-top: 0.8rem;
+      font-weight: 300;
+      color: #b8aa99;
+      letter-spacing: 0.1em;
+      font-size: 0.85rem;
+    }
+
+    /* GALLERY */
+    .section-gallery {
+      background: #0d0b0a;
+      padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 2vw, 40px);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .gallery-grid .g-item {
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: #1e1916;
+    }
+    .gallery-grid .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease, filter 0.5s;
+      display: block;
+    }
+    .gallery-grid .g-item:hover img {
+      transform: scale(1.02);
+      filter: brightness(1.05);
+    }
+    .g-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .g-item:nth-child(2) { grid-column: span 1; grid-row: span 1; }
+    .g-item:nth-child(3) { grid-column: span 1; grid-row: span 1; }
+    .g-item:nth-child(4) { grid-column: span 1; grid-row: span 1; }
+    .g-item:nth-child(5) { grid-column: span 2; grid-row: span 1; }
+    .g-item:nth-child(6) { grid-column: span 1; grid-row: span 2; }
+    .g-item:nth-child(7) { grid-column: span 1; grid-row: span 1; }
+    .g-item:nth-child(8) { grid-column: span 2; grid-row: span 1; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 6, 5, 0.92);
+      backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 1.5rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-height: 85vh;
+      max-width: 90vw;
+      object-fit: contain;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+    }
+    .lb-close {
+      position: absolute;
+      top: 24px;
+      right: 30px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #d4b68a;
+      transition: 0.3s;
+      background: none;
+      border: 0;
+    }
+    .lb-close:hover { transform: rotate(90deg); }
+    .lb-prev, .lb-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(20, 16, 14, 0.5);
+      color: #d4b68a;
+      border: 0;
+      font-size: 2.2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: 0.3s;
+    }
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
+    .lb-prev:hover, .lb-next:hover {
+      background: rgba(212, 182, 138, 0.2);
+    }
+
+    /* RSVP */
+    .section-rsvp {
+      background: #14100e;
+      padding: clamp(3.5rem, 8vh, 6rem) clamp(1.5rem, 4vw, 70px);
+      text-align: center;
+    }
+    .rsvp-message {
+      max-width: 600px;
+      margin: 0.5rem auto 1.5rem;
+      font-weight: 300;
+      color: #cbc1b5;
+      line-height: 1.8;
+      font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    }
+    .rsvp-message .heart {
+      color: #d4b68a;
+    }
+    .rsvp-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.8rem 3rem;
+      margin-top: 1.5rem;
+    }
+    .rsvp-links a {
+      color: #d4b68a;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(212, 182, 138, 0.2);
+      padding-bottom: 0.2rem;
+      transition: 0.3s;
+    }
+    .rsvp-links a:hover {
+      border-bottom-color: #d4b68a;
+    }
+
+    /* GIFT SECTION - Simplified with QR */
+    .section-gift {
+      background: #0d0b0a;
+      padding: clamp(3.5rem, 8vh, 6rem) clamp(1.5rem, 4vw, 70px);
+      text-align: center;
+    }
+    .gift-message {
+      max-width: 620px;
+      margin: 0.5rem auto 1.8rem;
+      font-weight: 300;
+      color: #cbc1b5;
+      line-height: 1.8;
+      font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    }
+    .gift-qr-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem auto 0;
+      max-width: 280px;
+    }
+    .gift-qr-wrapper .qr-image {
+      width: 100%;
+      max-width: 200px;
+      border: 1px solid rgba(212, 182, 138, 0.15);
+      border-radius: 4px;
+      padding: 0.5rem;
+      background: #14100e;
+    }
+    .gift-qr-wrapper .qr-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .gift-qr-wrapper .account-detail {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+      font-weight: 600;
+      color: #d4b68a;
+      letter-spacing: 0.02em;
+    }
+    .gift-qr-wrapper .account-detail small {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.7rem;
+      color: #8a7e72;
+      letter-spacing: 0.05em;
+      margin-top: 0.2rem;
+    }
+    .gift-note {
+      margin-top: 1.8rem;
+      font-size: 0.8rem;
+      color: #8a7e72;
+      font-style: italic;
+      letter-spacing: 0.03em;
+    }
+
+    /* FOOTER - with logo */
+    .footer {
+      background: #0d0b0a;
+      padding: 2.5rem clamp(1.5rem, 4vw, 70px) 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(212, 182, 138, 0.06);
+    }
+    .footer-logo {
+      max-width: 100px;
+      margin: 0 auto 0.8rem;
+      opacity: 0.7;
+      transition: 0.3s;
+    }
+    .footer-logo:hover {
+      opacity: 1;
+    }
+    .footer-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .footer .credit {
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      line-height: 1.8;
+      color: #8a7e72;
+    }
+    .footer .credit a {
+      color: #b8aa99;
+      transition: 0.3s;
+    }
+    .footer .credit a:hover {
+      color: #d4b68a;
+    }
+    .footer .credit .heart {
+      color: #d4b68a;
+      margin: 0 4px;
+    }
+
+    /* MUSIC BUTTON */
+    .music-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 100;
+      background: rgba(20, 16, 14, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 182, 138, 0.25);
+      color: #d4b68a;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+    .music-btn:hover {
+      background: rgba(212, 182, 138, 0.15);
+      transform: scale(1.05);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .venue-map { flex: 1 1 100%; min-height: 260px; }
+      .venue-info { flex: 1 1 100%; padding: 2rem 2rem; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .g-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+      .g-item:nth-child(6) { grid-column: span 1; grid-row: span 2; }
+      .g-item:nth-child(8) { grid-column: span 2; }
+    }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .g-item:nth-child(1), .g-item:nth-child(5), .g-item:nth-child(6), .g-item:nth-child(8) {
+        grid-column: span 1; grid-row: span 1;
+      }
+      .details-grid { grid-template-columns: 1fr 1fr; gap: 1.8rem 0.5rem; }
+      .countdown-grid { gap: 1.2rem; }
+      .music-btn { width: 42px; height: 42px; font-size: 1.2rem; bottom: 18px; right: 18px; }
+      .lb-prev, .lb-next { font-size: 1.6rem; padding: 0.2rem 0.6rem; }
+      .gift-qr-wrapper { max-width: 220px; }
+      .gift-qr-wrapper .qr-image { max-width: 160px; }
+    }
+    @media (max-width: 480px) {
+      .details-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .hero-content .names { font-size: clamp(2.6rem, 14vw, 3.8rem); }
+      .btn-open { padding: 0.7rem 2rem; font-size: 0.7rem; }
+      .section-padding { padding: 2.5rem 1.2rem; }
+      .gift-qr-wrapper { max-width: 180px; }
+      .gift-qr-wrapper .qr-image { max-width: 140px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="video/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="pre-title">— save the date —</div>
+      <div class="names">
+        <span>Elena</span> &amp; <span>James</span>
+      </div>
+      <div class="date">October 14, 2026</div>
+      <div class="tagline">“Forever begins with a single yes”</div>
+      <button class="btn-open" id="openInvitation">Open Invitation</button>
+    </div>
+  </section>
+
+  <!-- ===== INVITATION WRAPPER ===== -->
+  <div class="invitation-wrapper hidden" id="invitationWrapper">
+
+    <!-- INTRO -->
+    <section class="section-intro">
+      <h2>Elena &amp; James</h2>
+      <div class="divider-line"></div>
+      <p>With joyful hearts, we invite you to celebrate our love<br />as we begin our forever.</p>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="section-details">
+      <div class="details-grid">
+        <div class="detail-item"><div class="label">Date</div><div class="value">October 14, 2026</div></div>
+        <div class="detail-item"><div class="label">Ceremony</div><div class="value">4:30 PM</div></div>
+        <div class="detail-item"><div class="label">Church</div><div class="value">St. Mary's Chapel</div></div>
+        <div class="detail-item"><div class="label">Reception</div><div class="value">The Grand Manor</div></div>
+      </div>
+    </section>
+
+    <!-- VENUE -->
+    <section class="section-venue">
+      <div class="venue-wrap">
+        <div class="venue-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1!2d-73.9878!3d40.7484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sCentral%20Park!5e0!3m2!1sen!2sus!4v1712345678901!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="venue-info">
+          <h3>The Grand Manor</h3>
+          <address>123 Estate Drive, Cityville, NY 10001</address>
+          <a href="#" class="btn-directions">Get Directions</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="section-countdown" id="countdownSection">
+      <h2 class="serif" style="font-size:clamp(1.6rem,3vw,2.6rem);">Counting the moments</h2>
+      <div class="divider-line light"></div>
+      <div class="countdown-grid" id="countdownGrid">
+        <div class="countdown-item"><span id="days">00</span><small>Days</small></div>
+        <div class="countdown-item"><span id="hours">00</span><small>Hours</small></div>
+        <div class="countdown-item"><span id="minutes">00</span><small>Minutes</small></div>
+        <div class="countdown-item"><span id="seconds">00</span><small>Seconds</small></div>
+      </div>
+      <div id="countdownFinished" class="countdown-finished" style="display:none;">Today is the day! 🥂</div>
+    </section>
+
+    <!-- PRENUP VIDEO -->
+    <section class="section-prenup">
+      <div class="prenup-container">
+        <video autoplay muted loop playsinline preload="metadata" controls>
+          <source src="video/prenup.mp4" type="video/mp4">
+        </video>
+        <div class="prenup-caption">— our story in motion —</div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section-gallery" id="gallerySection">
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section-rsvp">
+      <h2 class="serif" style="font-size:clamp(2rem,4vw,3.2rem);">RSVP</h2>
+      <div class="divider-line"></div>
+      <div class="rsvp-message">
+        <span class="heart">♥</span> Forever starts here<br />
+        Thank you for being part of our journey.<br />
+        Your presence is our greatest gift.
+      </div>
+      <p style="color:#b8aa99; font-size:0.8rem; letter-spacing:0.05em; margin-bottom:0.5rem;">Kindly respond by September 30</p>
+      <div class="rsvp-links">
+        <a href="tel:+1234567890">📞 +1 (234) 567-890</a>
+        <a href="https://m.me/yourprofile" target="_blank">💬 Messenger</a>
+      </div>
+    </section>
+
+    <!-- GIFT SECTION - Simplified: GCash only with QR -->
+    <section class="section-gift">
+      <h2 class="serif" style="font-size:clamp(2rem,4vw,3.2rem);">A Token of Appreciation</h2>
+      <div class="divider-line"></div>
+      <div class="gift-message">
+        Your presence at our wedding is the greatest gift we could ask for.<br />
+        Should you wish to bless us with a monetary gift, we are deeply grateful<br />
+        for your generosity and thoughtfulness.
+      </div>
+      <div class="gift-qr-wrapper">
+        <div class="qr-image">
+          <img src="images/gcashqr.png" alt="GCash QR Code" />
+        </div>
+        <div class="account-detail">
+          0917 123 4567
+          <small>Elena &amp; James · GCash</small>
+        </div>
+      </div>
+      <div class="gift-note">Your kindness means the world to us. Thank you.</div>
+    </section>
+
+    <!-- FOOTER with logo -->
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="images/jcts-logo.png" alt="JC Tech Services" />
+      </div>
+      <div class="credit">
+        Made with <span class="heart">♥</span> by <a href="https://www.facebook.com/jctechservices2020" target="_blank">JC Tech Services</a>
+        <br />
+        <a href="mailto:jctechservices2020@gmail.com">jctechservices2020@gmail.com</a>
+        <span style="display:inline-block; margin:0 6px;">·</span>
+        <a href="https://www.facebook.com/jctechservices2020" target="_blank">Facebook</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose">✕</button>
+    <button class="lb-prev" id="lbPrev">‹</button>
+    <img id="lbImg" src="" alt="gallery" />
+    <button class="lb-next" id="lbNext">›</button>
+  </div>
+
+  <!-- ===== MUSIC BUTTON ===== -->
+  <button class="music-btn" id="musicBtn" aria-label="Toggle music">♫</button>
+
+  <script>
+    (function() {
+      "use strict";
+
+      const galleryImages = [
+        'gallery1.jpg', 'gallery2.jpg', 'gallery3.jpg', 'gallery4.jpg',
+        'gallery5.jpg', 'gallery6.jpg', 'gallery7.jpg', 'gallery8.jpg'
+      ];
+      const TARGET_DATE = new Date('2026-10-14T00:00:00').getTime();
+
+      const openBtn = document.getElementById('openInvitation');
+      const wrapper = document.getElementById('invitationWrapper');
+      const galleryGrid = document.getElementById('galleryGrid');
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lbImg');
+      const lbClose = document.getElementById('lbClose');
+      const lbPrev = document.getElementById('lbPrev');
+      const lbNext = document.getElementById('lbNext');
+      const musicBtn = document.getElementById('musicBtn');
+
+      // ----- MUSIC -----
+      let audio = null;
+      let musicPlaying = false;
+
+      function initAudio() {
+        if (!audio) {
+          audio = new Audio('music/bgmusic.mp3');
+          audio.loop = true;
+          audio.volume = 0.4;
+        }
+      }
+
+      function startMusic() {
+        initAudio();
+        audio.play().catch(() => {});
+        musicPlaying = true;
+        musicBtn.textContent = '♪';
+      }
+
+      function toggleMusic() {
+        initAudio();
+        if (musicPlaying) {
+          audio.pause();
+          musicPlaying = false;
+          musicBtn.textContent = '♫';
+        } else {
+          audio.play().catch(() => {});
+          musicPlaying = true;
+          musicBtn.textContent = '♪';
+        }
+      }
+
+      musicBtn.addEventListener('click', toggleMusic);
+
+      // ----- OPEN INVITATION -----
+      openBtn.addEventListener('click', function() {
+        wrapper.classList.remove('hidden');
+        wrapper.classList.add('visible');
+        startMusic();
+        setTimeout(() => {
+          wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      });
+
+      // ----- FORCE SCROLL TO HERO ON RELOAD -----
+      window.addEventListener('load', function() {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        wrapper.classList.remove('visible');
+        wrapper.classList.add('hidden');
+        if (audio) {
+          audio.pause();
+          musicPlaying = false;
+          musicBtn.textContent = '♫';
+        }
+      });
+
+      // ----- COUNTDOWN -----
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+      const countdownGrid = document.getElementById('countdownGrid');
+      const finishedEl = document.getElementById('countdownFinished');
+
+      function updateCountdown() {
+        const now = Date.now();
+        let diff = TARGET_DATE - now;
+        if (diff <= 0) {
+          countdownGrid.style.display = 'none';
+          finishedEl.style.display = 'block';
+          return;
+        }
+        const days = Math.floor(diff / 86400000);
+        diff %= 86400000;
+        const hours = Math.floor(diff / 3600000);
+        diff %= 3600000;
+        const minutes = Math.floor(diff / 60000);
+        diff %= 60000;
+        const seconds = Math.floor(diff / 1000);
+        daysEl.textContent = String(days).padStart(2, '0');
+        hoursEl.textContent = String(hours).padStart(2, '0');
+        minutesEl.textContent = String(minutes).padStart(2, '0');
+        secondsEl.textContent = String(seconds).padStart(2, '0');
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // ----- GALLERY -----
+      let currentIndex = 0;
+
+      function renderGallery() {
+        galleryGrid.innerHTML = '';
+        galleryImages.forEach((src, i) => {
+          const div = document.createElement('div');
+          div.className = 'g-item';
+          const img = document.createElement('img');
+          img.src = 'images/' + src;
+          img.alt = 'Wedding ' + (i + 1);
+          img.loading = 'lazy';
+          div.appendChild(img);
+          div.dataset.index = i;
+          div.addEventListener('click', () => openLightbox(i));
+          galleryGrid.appendChild(div);
+        });
+      }
+      renderGallery();
+
+      function openLightbox(index) {
+        currentIndex = index;
+        lbImg.src = 'images/' + galleryImages[index];
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function prevImage() {
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        lbImg.src = 'images/' + galleryImages[currentIndex];
+      }
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+        lbImg.src = 'images/' + galleryImages[currentIndex];
+      }
+
+      lbClose.addEventListener('click', closeLightbox);
+      lbPrev.addEventListener('click', prevImage);
+      lbNext.addEventListener('click', nextImage);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+      });
+
+      // ----- INTERSECTION OBSERVER -----
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.section-intro, .section-details, .section-venue, .section-countdown, .section-prenup, .section-gallery, .section-rsvp, .section-gift')
+        .forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(24px)';
+          el.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+          observer.observe(el);
+        });
+
+      // ----- REDUCED MOTION -----
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.section-intro, .section-details, .section-venue, .section-countdown, .section-prenup, .section-gallery, .section-rsvp, .section-gift')
+          .forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.transition = 'none';
+          });
+      }
+
+    })();
+  </script>
+
+</body>
+</html>
