@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JC Tech Services · Invitation Samples</title>
-    <!-- Google Fonts - Tech/Modern Focus -->
+    <title>JC Tech Services · Digital Invitation Samples</title>
+    <!-- Google Fonts - Clean IT/Service Focus -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -46,13 +46,16 @@
         /* ===== HEADER ===== */
         .header {
             display: flex;
-            justify-content: center;
-            padding: 0.8rem 0 2rem;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0 1.5rem;
             border-bottom: 1px solid rgba(26, 42, 58, 0.08);
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             animation: slideDown 0.8s ease forwards;
             opacity: 0;
             transform: translateY(-20px);
+            flex-wrap: wrap;
+            gap: 1rem;
         }
         @keyframes slideDown {
             to {
@@ -61,24 +64,36 @@
             }
         }
         .logo {
-            max-width: 140px;
+            max-width: 130px;
             display: block;
             transition: transform 0.4s ease, filter 0.4s ease;
         }
         .logo:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 4px 12px rgba(26, 42, 58, 0.15));
+            transform: scale(1.04);
+            filter: drop-shadow(0 4px 12px rgba(26, 42, 58, 0.12));
         }
         .logo img {
             width: 100%;
             height: auto;
             display: block;
         }
+        .header-tagline {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #2a4a5a;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 0.4rem 1.2rem;
+            border-radius: 2px;
+            border: 1px solid rgba(26, 42, 58, 0.06);
+        }
 
         /* ===== HERO ===== */
         .hero {
             text-align: center;
-            padding: 1rem 0 2.5rem;
+            padding: 0.5rem 0 2rem;
             opacity: 0;
             animation: fadeUp 1s 0.3s ease forwards;
             transform: translateY(24px);
@@ -90,25 +105,85 @@
             }
         }
         .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             font-weight: 700;
-            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+            font-size: clamp(2.2rem, 4vw, 3.6rem);
             color: #1a2a3a;
             letter-spacing: -0.02em;
             line-height: 1.2;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
         .hero h1 span {
             display: inline-block;
         }
-        .hero p {
+        .hero .subtitle {
             font-family: 'Inter', sans-serif;
             color: #2a4a5a;
-            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            font-size: clamp(1rem, 1.2vw, 1.15rem);
             font-weight: 400;
-            max-width: 580px;
+            max-width: 650px;
             margin: 0 auto;
             line-height: 1.7;
+        }
+        .hero .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem 1.2rem;
+            margin-top: 1.2rem;
+        }
+        .hero .service-tags .tag {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #1a2a3a;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.3rem 1.2rem;
+            border: 1px solid rgba(26, 42, 58, 0.08);
+            border-radius: 2px;
+        }
+
+        /* ===== PROMO BANNER ===== */
+        .promo-banner {
+            background: #1a2a3a;
+            color: #f5f8fa;
+            text-align: center;
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem 0 2rem;
+            border-radius: 2px;
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem 1.5rem;
+            opacity: 0;
+            animation: fadeUp 1s 0.5s ease forwards;
+            transform: translateY(20px);
+        }
+        .promo-banner .promo-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+        .promo-banner .promo-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .promo-banner .promo-price small {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+        .promo-banner .promo-note {
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.8;
         }
 
         /* ===== SAMPLES GRID ===== */
@@ -116,14 +191,14 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
-            margin: 2rem 0 1rem;
+            margin: 1.5rem 0 1rem;
         }
         .sample-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(4px);
-            border-radius: 14px;
+            border-radius: 0px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(26, 42, 58, 0.06);
+            box-shadow: 0 2px 16px rgba(26, 42, 58, 0.06);
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, background 0.4s ease;
             cursor: pointer;
             text-decoration: none;
@@ -147,8 +222,8 @@
             }
         }
         .sample-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 16px 48px rgba(26, 42, 58, 0.15);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 12px 40px rgba(26, 42, 58, 0.12);
             background: rgba(255, 255, 255, 0.9);
         }
         .sample-card .card-image {
@@ -177,7 +252,7 @@
             transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .sample-card:hover .card-image img {
-            transform: scale(1.04);
+            transform: scale(1.03);
         }
         .sample-card .card-content {
             padding: 1.5rem 1.8rem 1.8rem;
@@ -185,15 +260,15 @@
         }
         .sample-card .card-content .badge {
             display: inline-block;
-            font-family: 'Inter', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             font-size: 0.55rem;
             font-weight: 600;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             color: #1a2a3a;
             background: rgba(26, 42, 58, 0.07);
             padding: 0.2rem 0.9rem;
-            border-radius: 20px;
+            border-radius: 2px;
             margin-bottom: 0.5rem;
             transition: background 0.3s ease, color 0.3s ease;
         }
@@ -202,9 +277,9 @@
             color: #f5f8fa;
         }
         .sample-card .card-content h3 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             font-weight: 600;
-            font-size: clamp(1.3rem, 1.6vw, 1.6rem);
+            font-size: clamp(1.2rem, 1.5vw, 1.5rem);
             color: #1a2a3a;
             margin-bottom: 0.1rem;
             letter-spacing: -0.01em;
@@ -216,9 +291,9 @@
         .sample-card .card-content .couple {
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #3a5a6a;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
         }
         .sample-card .card-content p {
             font-family: 'Inter', sans-serif;
@@ -230,10 +305,10 @@
         .sample-card .card-content .view-link {
             display: inline-block;
             margin-top: 0.8rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             font-size: 0.7rem;
             font-weight: 600;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: #1a2a3a;
             border-bottom: 2px solid rgba(26, 42, 58, 0.15);
@@ -256,11 +331,11 @@
 
         /* ===== CONTACT SECTION ===== */
         .contact-section {
-            margin: 3.5rem 0 2rem;
-            padding: 2.5rem 2rem;
+            margin: 3rem 0 1.5rem;
+            padding: 2rem 2rem;
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(4px);
-            border-radius: 14px;
+            border-radius: 2px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             display: flex;
             flex-wrap: wrap;
@@ -280,11 +355,11 @@
             transition: transform 0.3s ease;
         }
         .contact-section .contact-item:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
         .contact-section .contact-item .label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.6rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.55rem;
             font-weight: 600;
             letter-spacing: 0.12em;
             text-transform: uppercase;
@@ -296,7 +371,7 @@
         }
         .contact-section .contact-item .value {
             font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: #1a2a3a;
         }
@@ -314,8 +389,8 @@
 
         /* ===== FOOTER ===== */
         .footer {
-            margin-top: 2rem;
-            padding-top: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(26, 42, 58, 0.06);
             text-align: center;
             width: 100%;
@@ -355,7 +430,7 @@
         }
         .footer .credit .sep {
             display: inline-block;
-            margin: 0 0.5rem;
+            margin: 0 0.4rem;
             color: #8aaaba;
         }
 
@@ -365,22 +440,35 @@
                 padding: 1.5rem 1rem;
             }
             .header {
-                padding: 0.4rem 0 1.5rem;
-                margin-bottom: 2rem;
+                flex-direction: column;
+                align-items: center;
+                padding: 0.4rem 0 1.2rem;
+                margin-bottom: 1.8rem;
+                gap: 0.5rem;
             }
             .logo {
                 max-width: 110px;
+            }
+            .header-tagline {
+                font-size: 0.65rem;
+                padding: 0.3rem 1rem;
             }
             .samples-grid {
                 grid-template-columns: 1fr;
                 gap: 1.8rem;
             }
             .contact-section {
-                padding: 1.8rem 1.2rem;
-                gap: 1.5rem 2rem;
+                padding: 1.5rem 1.2rem;
+                gap: 1.2rem 1.8rem;
             }
             .sample-card .card-content {
                 padding: 1.2rem 1.4rem 1.4rem;
+            }
+            .promo-banner .promo-price {
+                font-size: 1.5rem;
+            }
+            .promo-banner {
+                padding: 0.6rem 1rem;
             }
         }
         @media (max-width: 480px) {
@@ -388,10 +476,17 @@
                 aspect-ratio: 16 / 12;
             }
             .contact-section .contact-item .value {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
             .hero h1 {
-                font-size: clamp(2rem, 8vw, 2.6rem);
+                font-size: clamp(1.8rem, 8vw, 2.4rem);
+            }
+            .hero .service-tags .tag {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.8rem;
+            }
+            .promo-banner .promo-price {
+                font-size: 1.3rem;
             }
         }
         @media (prefers-reduced-motion: reduce) {
@@ -413,13 +508,26 @@
             <div class="logo">
                 <img src="images/jcts-logo.png" alt="JC Tech Services" />
             </div>
+            <span class="header-tagline">Digital Invitations · Web Solutions</span>
         </header>
 
         <!-- ===== HERO ===== -->
         <section class="hero">
             <h1><span>Invitation Samples</span></h1>
-            <p>Explore our curated collection of premium digital wedding invitations — each designed with elegance, craftsmanship, and attention to detail.</p>
+            <p class="subtitle">Explore our curated collection of premium digital invitations for weddings, anniversaries, and corporate events — each designed with elegance, craftsmanship, and attention to detail.</p>
+            <div class="service-tags">
+                <span class="tag">Weddings</span>
+                <span class="tag">Anniversaries</span>
+                <span class="tag">Corporate Events</span>
+            </div>
         </section>
+
+        <!-- ===== PROMO BANNER ===== -->
+        <div class="promo-banner">
+            <span class="promo-label">🎯 Special Launch Offer</span>
+            <span class="promo-price">Starts @ ₱899 <small>only</small></span>
+            <span class="promo-note">Custom designs · Full digital experience</span>
+        </div>
 
         <!-- ===== SAMPLES GRID ===== -->
         <div class="samples-grid" id="samples">
@@ -466,7 +574,7 @@
             </div>
             <div class="contact-item">
                 <span class="label">Facebook</span>
-                <span class="value"><a href="https://www.facebook.com/jctechservices2020" target="_blank">@jctechservices2020</a></span>
+                <span class="value"><a href="https://www.facebook.com/jctechservices2020" target="_blank">facebook.com/jctechservice</a></span>
             </div>
         </section>
 
@@ -478,8 +586,6 @@
                 <a href="mailto:jctechservices2020@gmail.com">jctechservices2020@gmail.com</a>
                 <span class="sep">·</span>
                 <a href="tel:+63915970162">+63 991 597 0162</a>
-                <span class="sep">·</span>
-                <a href="https://www.facebook.com/jctechservices2020" target="_blank">facebook.com/jctechservice</a>
             </div>
         </footer>
 
